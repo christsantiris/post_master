@@ -36,6 +36,19 @@ def posts():
         all_posts = BlogPost.query.order_by(BlogPost.date_posted).all()
         return render_template('posts.html', posts=all_posts)
 
+@app.route('/posts/edit/<int:id>', methods=['GET', 'POST'])
+def edit(id):
+    post = BlogPost.query.get_or_404(id)
+
+    if request.method == 'POST':       
+        post.title = request.form['title']
+        post.content = request.form['content']
+        post.author = request.form['author']
+        db.session.commit()
+        return redirect('/posts')
+    else:
+        return render_template('edit.html', post=post)
+
 @app.route('/posts/delete/<int:id>')
 def delete(id):
     post = BlogPost.query.get_or_404(id)

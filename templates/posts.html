@@ -10,28 +10,37 @@
   <hr>
     <h2>Create New Post</h2>
     <form action='/posts' method='POST'>
-      Title: <input type='text' name='title' id='title'>
+      <label for="title">Title:</label> 
+      <input class="form-control" type="text" name='title' id='title' aria-label="Search" placeholder="Enter Title">
       <br>
-      Post: <input type="text", name='content', id='content'>
+      <label for="author">Author:</label>
+      <input class="form-control" type="text" name='author', id='author' aria-label="Search" placeholder="Enter Author">
       <br>
-      Author: <input type="text", name='author', id='author'>
+        <label for="content">Post:</label>
+        <textarea class="form-control" id="content" name="content" rows="3" placeholder="Enter Some Content" aria-label="Enter Content">
+
+        </textarea>
+      <br>
+
       <input type='submit' value='Post'>
     </form>
 <hr>
 
   {% for post in posts %}
-
+    <br>
     <h2>{{ post.title }}</h2>
     {% if post.author %}
-    <p>By: {{ post.author }}</p>
+    <small>Posted by {{ post.author }} on {{ post.date_posted }}</small>
     {% else %}
-    <p>By: N/A</p>
+    <small>Posted by Unknown on {{ post.date_posted }}</small>
     {% endif %}
+    <br>
 
     <p>{{ post.content }}</p>
     
-    <a href='/posts/delete/{{post.id}}'>Delete</a>
-    <a href='/posts/edit/{{post.id}}'>Edit</a>
+    <a class="btn btn-danger" href='/posts/delete/{{post.id}}'>Delete</a>
+    <a  class="btn btn-primary" href='/posts/edit/{{post.id}}'>Edit</a>
+    <br>
   {% endfor %}
 
 {% endblock %}

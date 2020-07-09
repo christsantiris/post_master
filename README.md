@@ -9,7 +9,7 @@
 
 ## To set up Db: 
 ### `run python3`
-### 1from app import db`
+### `from app import db`
 ### `db.create_all()`
 ### `from app import BlogPost`
 ### `BlogPost.query.all()`

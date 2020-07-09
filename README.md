@@ -13,4 +13,4 @@
 ### `db.create_all()`
 ### `from app import BlogPost`
 ### `BlogPost.query.all()`
-### `db.session.add(BlogPost(title='Post 1', content='Content of post 1', author='Chris Tsantiris'))
+### `db.session.add(BlogPost(title='Post 1', content='Content of post 1', author='Chris Tsantiris'))`
